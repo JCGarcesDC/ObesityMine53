@@ -613,7 +613,7 @@ make sync_data_up    # En lugar de: dvc push
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/JCGarcesDC/ObesityEstimation53.git
+git clone https://github.com/JCGarcesDC/ObesityMine53.git
 cd ObesityMine53
 
 # Crear entorno
