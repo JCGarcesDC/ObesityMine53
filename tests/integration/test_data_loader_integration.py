@@ -7,10 +7,10 @@ from src.data.data_loader import CSVDataLoader, DataFrameAnalyzer
 @pytest.mark.integration
 def test_csvdataloader_loads_project_raw_file_if_present():
     """
-    Integration test: use a real project raw CSV if present at data/raw/sample_raw_m.csv.
+    Integration test: use a real project raw CSV if present at data/raw/tests_NHANES-2017-2018-height-weight.csv.
     The test is skipped when the file is not available.
     """
-    project_file = Path.cwd() / "data" / "raw" / "sample_raw_m.csv"
+    project_file = Path.cwd() / "data" / "raw" / "tests-NHANES-2017-2018-height-weight.csv"
     if not project_file.exists():
         pytest.skip("Project raw data not present; skipping integration test.")
 
