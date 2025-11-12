@@ -9,7 +9,7 @@ def test_csvdataloader_end_to_end_with_tmpfile(tmp_path):
     End-to-end test writing a CSV to disk (tmp_path) and reading it with the real loader.
     This isolates filesystem effects and does not modify repo files.
     """
-    csv = tmp_path / "sample.csv"
+    csv = tmp_path / "tests-NHANES-2017-2018-height-weight.csv"
     df = pd.DataFrame({"height": [1.7, 1.8], "weight": [70, 80]})
     df.to_csv(csv, index=False)
 
