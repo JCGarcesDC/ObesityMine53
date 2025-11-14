@@ -61,7 +61,7 @@ A machine learning project for obesity estimation following Cookiecutter Data Sc
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/JCGarcesDC/ObesityEstimation53.git
+git clone https://github.com/JCGarcesDC/ObesityMine53.git
 cd ObesityMine53
 ```
 
