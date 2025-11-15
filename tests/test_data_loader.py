@@ -19,3 +19,4 @@ def test_csv_data_loader_loads(tmp_path):
 def test_csv_data_loader_invalid_path_returns_none(tmp_path):
     loader = CSVDataLoader(str(tmp_path / 'missing.csv'))
     assert loader.load_with_validation() is None
+
