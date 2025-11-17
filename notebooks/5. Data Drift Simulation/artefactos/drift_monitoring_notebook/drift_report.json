@@ -1,0 +1,197 @@
+{
+  "baseline_metrics": {
+    "accuracy": 0.8795811518324608,
+    "f1_weighted": 0.8781378793107103
+  },
+  "monitoring_metrics": {
+    "accuracy": 0.13089005235602094,
+    "f1_weighted": 0.11794844475595646
+  },
+  "feature_drift_count": 10,
+  "alerts": [
+    {
+      "timestamp": "2025-11-15T10:33:36.363470",
+      "feature_name": "height",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.3507853403141361,
+      "threshold": 0.3507853403141361,
+      "suggested_action": "Continue monitoring 'height' for further changes",
+      "details": {
+        "detector": "Kolmogorov-Smirnov",
+        "p_value": 2.9830632366038193e-21,
+        "baseline": {
+          "mean": 1.7088829424083771,
+          "std": 0.09449755759658127,
+          "min": 1.483284,
+          "max": 1.975663
+        },
+        "monitoring": {
+          "mean": 1.802991213558791,
+          "std": 0.09573984388491062,
+          "min": 1.5825999965895152,
+          "max": 2.085873708621993
+        }
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.364471",
+      "feature_name": "height",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.401934379729058,
+      "threshold": 0.401934379729058,
+      "suggested_action": "Continue monitoring 'height' for further changes",
+      "details": {
+        "detector": "Hellinger",
+        "p_value": 1.0,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.364471",
+      "feature_name": "weight",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.39528795811518325,
+      "threshold": 0.39528795811518325,
+      "suggested_action": "Continue monitoring 'weight' for further changes",
+      "details": {
+        "detector": "Kolmogorov-Smirnov",
+        "p_value": 4.946843514770219e-27,
+        "baseline": {
+          "mean": 87.01384515445025,
+          "std": 26.633570922094584,
+          "min": 39.101805,
+          "max": 165.057269
+        },
+        "monitoring": {
+          "mean": 113.34371469366151,
+          "std": 25.220097579700568,
+          "min": 63.69211495415851,
+          "max": 191.55349617274996
+        }
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.364471",
+      "feature_name": "weight",
+      "drift_type": "statistical",
+      "severity": "critical",
+      "drift_score": 26.32986953921125,
+      "threshold": 26.32986953921125,
+      "suggested_action": "CRITICAL drift in 'weight'. Recommend: (1) Verify data source quality, (2) Check for upstream data changes, (3) Consider feature re-engineering",
+      "details": {
+        "detector": "Wasserstein",
+        "p_value": 1.0,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.364471",
+      "feature_name": "weight",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.4341746139171273,
+      "threshold": 0.4341746139171273,
+      "suggested_action": "Continue monitoring 'weight' for further changes",
+      "details": {
+        "detector": "Hellinger",
+        "p_value": 1.0,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.365471",
+      "feature_name": "fcvc",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.10067591348410997,
+      "threshold": 0.10067591348410997,
+      "suggested_action": "Continue monitoring 'fcvc' for further changes",
+      "details": {
+        "detector": "Hellinger",
+        "p_value": 1.0,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.365471",
+      "feature_name": "ncp",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.14354371368727556,
+      "threshold": 0.14354371368727556,
+      "suggested_action": "Continue monitoring 'ncp' for further changes",
+      "details": {
+        "detector": "Hellinger",
+        "p_value": 1.0,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.367471",
+      "feature_name": "tue",
+      "drift_type": "statistical",
+      "severity": "low",
+      "drift_score": 0.1020506091026434,
+      "threshold": 0.1020506091026434,
+      "suggested_action": "Continue monitoring 'tue' for further changes",
+      "details": {
+        "detector": "Hellinger",
+        "p_value": 1.0,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.368473",
+      "feature_name": "family_history_with_overweight",
+      "drift_type": "statistical",
+      "severity": "critical",
+      "drift_score": 4.51015374927848,
+      "threshold": 4.51015374927848,
+      "suggested_action": "CRITICAL drift in 'family_history_with_overweight'. Recommend: (1) Verify data source quality, (2) Check for upstream data changes, (3) Consider feature re-engineering",
+      "details": {
+        "detector": "Chi-Square",
+        "p_value": 0.033694211857927356,
+        "baseline": null,
+        "monitoring": null
+      }
+    },
+    {
+      "timestamp": "2025-11-15T10:33:36.373470",
+      "feature_name": "mtrans",
+      "drift_type": "statistical",
+      "severity": "critical",
+      "drift_score": 9.882573433438571,
+      "threshold": 9.882573433438571,
+      "suggested_action": "CRITICAL drift in 'mtrans'. Recommend: (1) Verify data source quality, (2) Check for upstream data changes, (3) Consider feature re-engineering",
+      "details": {
+        "detector": "Chi-Square",
+        "p_value": 0.04245286030934946,
+        "baseline": null,
+        "monitoring": null
+      }
+    }
+  ],
+  "performance_alert": {
+    "timestamp": "2025-11-15T10:33:36.379719",
+    "feature_name": "f1_score",
+    "drift_type": "performance",
+    "severity": "medium",
+    "drift_score": 0.7601894345547539,
+    "threshold": 0.05,
+    "suggested_action": "CRITICAL: f1_score degraded by 76.0%. Recommend immediate model retraining with recent data.",
+    "details": {
+      "baseline_value": 0.8781378793107103,
+      "monitoring_value": 0.11794844475595646,
+      "degradation_pct": 86.56834563969163
+    }
+  }
+}
