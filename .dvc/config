@@ -1,5 +1,4 @@
 [core]
-    remote = storage
-['remote "storage"']
+    remote = gcs
+[remote "gcs"]
     url = gs://obesityestimation-mna-mlops-53
-    credentialpath = d:\OneDrive\Escritorio\Maestria IA\Trimestre 4\MLOps\Git_Local\ObesityMine53\.dvc\obesityestimation-mna-mlops-53-5118ae1196dd.json

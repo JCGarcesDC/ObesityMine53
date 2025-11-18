@@ -27,12 +27,9 @@ mlruns/
 mlartifacts/
 outputs/
 
-# Data (ignorar datos, mantener metadatos de DVC)
-data/**
-!data/**/*.dvc
-!data/**/.gitkeep
-!data/**/*.gitignore
-!data/README.md
+# Ignorar toda la carpeta data, pero permitir su propio .gitignore
+!data/.gitignore
+
 
 # Models
 models/*
@@ -50,3 +47,9 @@ models/*
 # Logs
 *.log
 logs/
+
+# Secrets
+.Secrets
+
+# Data
+data/*.csv.DS_Store

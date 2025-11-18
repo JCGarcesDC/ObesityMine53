@@ -1,0 +1,9 @@
+# Ignorar TODO dentro de data
+*.csv
+
+# PERO permitir metadatos de DVC y archivos auxiliares
+data/**/*.csv
+!**/*.dvc
+!**/.gitkeep
+!**/.gitignore
+!README.md

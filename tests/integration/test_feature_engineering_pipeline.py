@@ -3,6 +3,8 @@ import pandas as pd
 import pandas.testing as pdt
 import pytest
 
+
+pytestmark = pytest.mark.integration
 from src.features.feature_engineering import FeatureEngineeringPipeline, BMICalculator
 
 
