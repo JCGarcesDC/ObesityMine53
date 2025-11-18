@@ -36,7 +36,7 @@ Esta carpeta contiene la documentación completa del proyecto ObesityMine53, inc
 - **MLflow 2.0+**: Experiment tracking y model registry
 - **Databricks**: Plataforma de ML colaborativa
 - **Unity Catalog**: Sistema moderno de metadatos
-- **Python 3.8+**: Lenguaje principal
+- **Python 3.11**: Lenguaje principal
 - **Jupyter Notebooks**: Desarrollo interactivo
 
 #### Librerías de ML
@@ -146,6 +146,6 @@ Para preguntas sobre la implementación, consulta:
 ---
 
 **Versión**: 1.0  
-**Fecha**: Noviembre 2024  
+**Fecha**: 17 de Noviembre 2025  
 **Proyecto**: ObesityMine53 - MLOps Integration  
 **Autor**: Implementación académica para Maestría en IA

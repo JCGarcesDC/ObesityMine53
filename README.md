@@ -1,6 +1,22 @@
 # ObesityMine - MLOps Project for Obesity Estimation
 
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![MLOps](https://img.shields.io/badge/MLOps-Ready-orange.svg)
+
 A machine learning project for obesity estimation following Cookiecutter Data Science standards.
+
+## 📑 Tabla de Contenidos
+
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [MLOps Stack](#mlops-stack)
+- [Development Workflow](#development-workflow)
+- [Configuration](#configuration)
+- [Testing](#testing)
+- [Project Features](#project-features)
+- [References](#references)
+- [License](#license)
 
 ## Project Organization
 ```
@@ -38,7 +54,7 @@ A machine learning project for obesity estimation following Cookiecutter Data Sc
 │   ├── cargar_analisis.py    <- Data loading and initial analysis
 │   ├── limpieza.py            <- Data cleaning functions
 │   ├── eda.py                 <- Exploratory data analysis
-│   ├── feature_engeenering.py <- Feature engineering pipeline
+│   ├── feature_engeenering.py <- Feature engineering pipeline (nota: mantiene nombre original por compatibilidad)
 │   ├── modelos.py             <- Model definitions
 │   ├── train.py               <- Training pipeline
 │   ├── pipelines.py           <- MLOps pipelines
@@ -110,6 +126,9 @@ make sync_data_down
 python test_environment.py
 # or
 make test_environment
+
+# Verificar instalación del paquete
+python -c "import src; print(src.__version__)"
 ```
 
 ## Usage
@@ -149,6 +168,25 @@ Since the project is installed as a package, you can import modules directly:
 from src.limpieza import eliminar_atipicos, limpiar_dataframe
 from src.cargar_analisis import cargar_datos, analisis_inicial
 from src.feature_engeenering import crear_features
+```
+
+> **Nota:** El archivo `feature_engeenering.py` mantiene su nombre original (con typo) por compatibilidad con imports existentes. El nombre correcto sería "engineering", pero se mantiene para no romper código existente.
+
+### Ejemplo Rápido
+
+```python
+from src.data import CSVDataLoader
+from src.preprocessing import DataCleaner
+
+# Cargar datos
+loader = CSVDataLoader('data/raw/obesity_data.csv')
+df = loader.load_with_validation()
+
+# Limpiar datos
+cleaner = DataCleaner(target_col='nobeyesdad')
+df_clean = cleaner.fit_transform(df)
+
+print(f"Datos limpios: {df_clean.shape}")
 ```
 
 ### Data Version Control (DVC)
@@ -278,11 +316,6 @@ pytest tests/test_*.py       # archivo(s) específico(s)
 - [MLflow Documentation](https://mlflow.org/docs/latest/) - Experiment tracking
 - Data dictionary available in `references/README.md`
 
-1. Create a new branch
-2. Make changes
-3. Run tests
-4. Submit PR
-
 ## License
 
-[Your License Here]
+MIT License - Ver archivo [LICENSE](LICENSE) para más detalles.
