@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0 -- /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
+configfile: pytest.ini
+plugins: anyio-4.11.0
+collecting ... collected 26 items / 24 deselected / 2 selected
+
+tests/integration/test_data_loader_end_to_end_tmpfile.py::test_csvdataloader_end_to_end_with_tmpfile PASSED [ 50%]
+tests/integration/test_data_loader_integration.py::test_csvdataloader_loads_project_raw_file_if_present SKIPPED [100%]
+
+=========================== short test summary info ============================
+SKIPPED [1] tests/integration/test_data_loader_integration.py:15: Project raw data not present; skipping integration test.
+================= 1 passed, 1 skipped, 24 deselected in 0.11s ==================

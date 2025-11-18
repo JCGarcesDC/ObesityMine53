@@ -1,0 +1,35 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.11.0
+collected 4 items
+
+tests/unit/test_bmi_calculator.py ....                                   [100%]
+
+============================== 4 passed in 0.04s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.11.0
+collected 13 items
+
+tests/unit/test_bmi_calculator.py .........                              [ 69%]
+tests/unit/test_feature_engineering_pipeline.py ....                     [100%]
+
+============================== 13 passed in 0.50s ==============================
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.11.0
+collected 13 items
+
+tests/integration/test_feature_engineering_pipeline.py ....              [ 30%]
+tests/unit/test_bmi_calculator.py .........                              [100%]
+
+============================== 13 passed in 0.52s ==============================
