@@ -52,4 +52,4 @@ logs/
 .Secrets
 
 # Data
-data/*.csv
+data/*.csv.DS_Store
