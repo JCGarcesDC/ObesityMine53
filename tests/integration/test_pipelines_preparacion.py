@@ -1,7 +1,10 @@
 import pandas as pd
 import numpy as np
+import pytest
 
 from src.pipelines import preparar_datos_para_modelado
+
+@pytest.mark.integration
 
 
 def test_preparar_datos_para_modelado_returns_expected_shapes():

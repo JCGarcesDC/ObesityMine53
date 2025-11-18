@@ -9,14 +9,20 @@ from fastapi.testclient import TestClient
 from unittest.mock import patch, MagicMock
 from api.app import app
 
+pytestmark = pytest.mark.integration
+
 # Cliente de prueba
-client = TestClient(app)
+#client = TestClient(app)
+@pytest.fixture(scope="session")
+def client():
+    with TestClient(app) as c:
+        yield c
 
 
 class TestHealthEndpoint:
     """Tests para el endpoint de salud."""
     
-    def test_health_check_success(self):
+    def test_health_check_success(self, client):
         """Health check debe retornar 200."""
         response = client.get("/health")
         
@@ -27,7 +33,7 @@ class TestHealthEndpoint:
         # Permitir estado unhealthy si modelo no carga en tests
         assert data["status"] in ["healthy", "unhealthy"]
     
-    def test_health_check_structure(self):
+    def test_health_check_structure(self, client):
         """Health check debe tener estructura correcta."""
         response = client.get("/health")
         data = response.json()
@@ -62,7 +68,7 @@ class TestPredictEndpoint:
             "MTRANS": "public_transportation"
         }
     
-    def test_predict_success(self, valid_payload):
+    def test_predict_success(self, valid_payload, client):
         """Predicción con datos válidos debe retornar 200 o 503."""
         response = client.post("/predict", json=valid_payload)
         
@@ -79,7 +85,7 @@ class TestPredictEndpoint:
         assert "probabilities" in data
         assert "bmi" in data
     
-    def test_predict_response_types(self, valid_payload):
+    def test_predict_response_types(self, valid_payload, client):
         """Verificar tipos de datos en respuesta."""
         response = client.post("/predict", json=valid_payload)
         
@@ -93,7 +99,7 @@ class TestPredictEndpoint:
         assert isinstance(data["probabilities"], dict)
         assert isinstance(data["bmi"], float)
     
-    def test_predict_invalid_age(self, valid_payload):
+    def test_predict_invalid_age(self, valid_payload, client):
         """Edad fuera de rango debe retornar 422."""
         invalid_payload = valid_payload.copy()
         invalid_payload["Age"] = 150.0  # Edad inválida
@@ -101,7 +107,7 @@ class TestPredictEndpoint:
         response = client.post("/predict", json=invalid_payload)
         assert response.status_code == 422
     
-    def test_predict_invalid_height(self, valid_payload):
+    def test_predict_invalid_height(self, valid_payload, client):
         """Altura inválida debe retornar 422."""
         invalid_payload = valid_payload.copy()
         invalid_payload["Height"] = 3.0  # Altura imposible
@@ -109,7 +115,7 @@ class TestPredictEndpoint:
         response = client.post("/predict", json=invalid_payload)
         assert response.status_code == 422
     
-    def test_predict_invalid_weight(self, valid_payload):
+    def test_predict_invalid_weight(self, valid_payload, client):
         """Peso inválido debe retornar 422."""
         invalid_payload = valid_payload.copy()
         invalid_payload["Weight"] = 10.0  # Peso muy bajo
@@ -117,7 +123,7 @@ class TestPredictEndpoint:
         response = client.post("/predict", json=invalid_payload)
         assert response.status_code == 422
     
-    def test_predict_invalid_gender(self, valid_payload):
+    def test_predict_invalid_gender(self, valid_payload, client):
         """Género inválido debe retornar 422."""
         invalid_payload = valid_payload.copy()
         invalid_payload["Gender"] = "other"  # No soportado
@@ -125,7 +131,7 @@ class TestPredictEndpoint:
         response = client.post("/predict", json=invalid_payload)
         assert response.status_code == 422
     
-    def test_predict_missing_field(self, valid_payload):
+    def test_predict_missing_field(self, valid_payload, client):
         """Falta campo obligatorio debe retornar 422."""
         incomplete_payload = valid_payload.copy()
         del incomplete_payload["Age"]
@@ -133,7 +139,7 @@ class TestPredictEndpoint:
         response = client.post("/predict", json=incomplete_payload)
         assert response.status_code == 422
     
-    def test_predict_bmi_calculation(self, valid_payload):
+    def test_predict_bmi_calculation(self, valid_payload, client):
         """Verificar cálculo de BMI correcto."""
         response = client.post("/predict", json=valid_payload)
         
@@ -173,7 +179,7 @@ class TestBatchPredictEndpoint:
             ]
         }
     
-    def test_batch_predict_success(self, valid_batch_payload):
+    def test_batch_predict_success(self, valid_batch_payload, client):
         """Predicción batch exitosa."""
         response = client.post("/predict_batch", json=valid_batch_payload)
         
@@ -186,7 +192,7 @@ class TestBatchPredictEndpoint:
         assert "predictions" in data
         assert len(data["predictions"]) == 2
     
-    def test_batch_predict_max_limit(self):
+    def test_batch_predict_max_limit(self, client):
         """No permitir más de 100 instancias."""
         oversized_batch = {
             "instances": [
@@ -208,7 +214,7 @@ class TestBatchPredictEndpoint:
 class TestModelInfoEndpoint:
     """Tests para endpoint de información del modelo."""
     
-    def test_model_info_success(self):
+    def test_model_info_success(self, client):
         """Model info debe retornar 200."""
         response = client.get("/model_info")
         
@@ -227,7 +233,7 @@ class TestModelInfoEndpoint:
         assert "features" in data
         assert "target_classes" in data
     
-    def test_model_info_values(self):
+    def test_model_info_values(self, client):
         """Verificar valores esperados en model info."""
         response = client.get("/model_info")
         
@@ -260,7 +266,7 @@ class TestExplainEndpoint:
             "explain_type": "feature_importance"
         }
     
-    def test_explain_success(self, valid_explain_payload):
+    def test_explain_success(self, valid_explain_payload, client):
         """Explicación exitosa."""
         response = client.post("/explain", json=valid_explain_payload)
         
@@ -274,7 +280,7 @@ class TestExplainEndpoint:
         assert "feature_contributions" in data
         assert "explain_type" in data
     
-    def test_explain_feature_importance(self, valid_explain_payload):
+    def test_explain_feature_importance(self, valid_explain_payload, client):
         """Explicación con feature importance."""
         response = client.post("/explain", json=valid_explain_payload)
         
@@ -286,7 +292,7 @@ class TestExplainEndpoint:
         assert isinstance(data["feature_contributions"], dict)
         assert len(data["feature_contributions"]) > 0
     
-    def test_explain_invalid_type(self, valid_explain_payload):
+    def test_explain_invalid_type(self, valid_explain_payload, client):
         """Tipo de explicación inválido debe retornar 422."""
         invalid_payload = valid_explain_payload.copy()
         invalid_payload["explain_type"] = "invalid_type"
@@ -298,7 +304,7 @@ class TestExplainEndpoint:
 class TestRootEndpoint:
     """Tests para endpoint raíz."""
     
-    def test_root_endpoint(self):
+    def test_root_endpoint(self, client):
         """Root debe retornar información básica."""
         response = client.get("/")
         

@@ -190,7 +190,8 @@ async def predict_batch(request: BatchPredictionRequest):
             result = predictor.predict_with_details(input_data)
             predictions.append(ObesityPredictionResponse(**result))
         
-        return BatchPredictionResponse(predictions=predictions)
+        #return BatchPredictionResponse(predictions=predictions)
+        return BatchPredictionResponse(total=len(predictions), predictions=predictions,)
     
     except HTTPException:
         raise

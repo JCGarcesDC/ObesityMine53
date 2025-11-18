@@ -8,6 +8,10 @@ from src.preprocessing.cleaning import DataCleaner
 from src.features.feature_engineering import BMICalculator
 from src.pipelines import preparar_datos_para_modelado
 
+import pytest
+
+@pytest.mark.integration
+
 
 def test_e2e_pipeline_simple():
     # Minimal, separable synthetic data resembling BMI influence

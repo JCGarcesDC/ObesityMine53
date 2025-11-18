@@ -1,6 +1,10 @@
 import pandas as pd
+import pytest
 
 from src.data.data_loader import DataFrameAnalyzer
+
+pytestmark = pytest.mark.unit
+
 
 
 def test_dataframe_analyzer_basic_info_and_types():

@@ -1,35 +1,181 @@
+=== UNIT TESTS ===
 ============================= test session starts ==============================
 platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
 rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
-configfile: pyproject.toml
+configfile: pytest.ini
 testpaths: tests
 plugins: anyio-4.11.0
-collected 4 items
+collected 49 items / 27 deselected / 22 selected
 
-tests/unit/test_bmi_calculator.py ....                                   [100%]
+tests/unit/test_bmi_calculator.py .........                              [ 40%]
+tests/unit/test_data_loader.py .........                                 [ 81%]
+tests/unit/test_dataframe_analyzer.py ..                                 [ 90%]
+tests/unit/test_preprocessing_cleaning.py ..                             [100%]
 
-============================== 4 passed in 0.04s ===============================
+=============================== warnings summary ===============================
+api/models.py:41
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:41: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ObesityPredictionRequest(BaseModel):
+
+.venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:383
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+  * 'schema_extra' has been renamed to 'json_schema_extra'
+    warnings.warn(message, UserWarning)
+
+api/models.py:107
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:107: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ObesityPredictionResponse(BaseModel):
+
+api/models.py:139
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:139: PydanticDeprecatedSince20: `min_items` is deprecated and will be removed, use `min_length` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    instances: List[ObesityPredictionRequest] = Field(
+
+api/models.py:139
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:139: PydanticDeprecatedSince20: `max_items` is deprecated and will be removed, use `max_length` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    instances: List[ObesityPredictionRequest] = Field(
+
+api/models.py:163
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:163: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('explain_type')
+
+api/models.py:170
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:170: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ExplainResponse(BaseModel):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================ 22 passed, 27 deselected, 7 warnings in 0.93s =================
+
+=== INTEGRATION TESTS ===
 ============================= test session starts ==============================
 platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
 rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
-configfile: pyproject.toml
+configfile: pytest.ini
 testpaths: tests
 plugins: anyio-4.11.0
-collected 13 items
+collected 49 items / 22 deselected / 27 selected
 
-tests/unit/test_bmi_calculator.py .........                              [ 69%]
-tests/unit/test_feature_engineering_pipeline.py ....                     [100%]
+tests/integration/test_api.py ..................                         [ 66%]
+tests/integration/test_data_loader_end_to_end_tmpfile.py .               [ 70%]
+tests/integration/test_data_loader_integration.py .                      [ 74%]
+tests/integration/test_feature_engineering_pipeline.py ....              [ 88%]
+tests/integration/test_integration_e2e.py .                              [ 92%]
+tests/integration/test_nhanes_schema_and_sanity.py .                     [ 96%]
+tests/integration/test_pipelines_preparacion.py .                        [100%]
 
-============================== 13 passed in 0.50s ==============================
-============================= test session starts ==============================
-platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
-rootdir: /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1
-configfile: pyproject.toml
-testpaths: tests
-plugins: anyio-4.11.0
-collected 13 items
+=============================== warnings summary ===============================
+api/models.py:41
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:41: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ObesityPredictionRequest(BaseModel):
 
-tests/integration/test_feature_engineering_pipeline.py ....              [ 30%]
-tests/unit/test_bmi_calculator.py .........                              [100%]
+.venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:383
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+  * 'schema_extra' has been renamed to 'json_schema_extra'
+    warnings.warn(message, UserWarning)
 
-============================== 13 passed in 0.52s ==============================
+api/models.py:107
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:107: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ObesityPredictionResponse(BaseModel):
+
+api/models.py:139
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:139: PydanticDeprecatedSince20: `min_items` is deprecated and will be removed, use `min_length` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    instances: List[ObesityPredictionRequest] = Field(
+
+api/models.py:139
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:139: PydanticDeprecatedSince20: `max_items` is deprecated and will be removed, use `max_length` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    instances: List[ObesityPredictionRequest] = Field(
+
+api/models.py:163
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:163: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('explain_type')
+
+api/models.py:170
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/api/models.py:170: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ExplainResponse(BaseModel):
+
+tests/integration/test_api.py: 15 warnings
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator SimpleImputer from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py: 15 warnings
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator Pipeline from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py: 14 warnings
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator OneHotEncoder from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator ColumnTransformer from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LogisticRegression from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator RandomForestClassifier from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/xgboost/core.py:158: UserWarning: [19:28:51] WARNING: /Users/runner/work/xgboost/xgboost/src/gbm/../common/error_msg.h:80: If you are loading a serialized model (like pickle in Python, RDS in R) or
+  configuration generated by an older version of XGBoost, please export the model by calling
+  `Booster.save_model` from that version first, then load it back in current version. See:
+  
+      https://xgboost.readthedocs.io/en/stable/tutorials/saving_model.html
+  
+  for more details about differences between saving model and serializing.
+  
+    warnings.warn(smsg, UserWarning)
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator KNeighborsClassifier from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LabelBinarizer from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator MLPClassifier from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check_success
+  /Users/adrianmontiel/Documents/GitHub/ObesityMine53-1/.venv/lib/python3.9/site-packages/sklearn/base.py:380: InconsistentVersionWarning: Trying to unpickle estimator SVC from version 1.7.2 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================ 27 passed, 22 deselected, 75 warnings in 0.92s ================

@@ -4,6 +4,9 @@ import pandas.testing as pdt
 import pytest
 from src.features.feature_engineering import BMICalculator
 
+pytestmark = pytest.mark.unit
+
+
 # Test that transform does not mutate the input DataFrame and preserves dtypes/index.
 def test_transform_preserves_input_dataframe():
     """Transform should return a new DataFrame and must not modify the input in-p lace."""

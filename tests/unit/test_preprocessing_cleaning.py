@@ -4,6 +4,7 @@ import pytest
 
 from src.preprocessing.cleaning import DataCleaner, OutlierDetector
 
+pytestmark = pytest.mark.unit
 
 def test_datacleaner_fit_transform_basic():
     # Use already standardized target labels to match OBESITY_MAPPING

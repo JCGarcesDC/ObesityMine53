@@ -5,7 +5,7 @@ Define los esquemas de validación para entrada y salida de datos.
 """
 
 from pydantic import BaseModel, Field, validator
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Literal
 from enum import Enum
 
 
@@ -16,7 +16,7 @@ class GenderEnum(str, Enum):
 
 
 class YesNoEnum(str, Enum):
-    """Enumeración para respuestas sí/no."""
+    """Enumeración para respuestas sí/no."""    
     yes = "yes"
     no = "no"
 
@@ -169,29 +169,37 @@ class ExplainRequest(BaseModel):
 
 class ExplainResponse(BaseModel):
     """Schema para response de explicabilidad."""
-    
-    prediction: ObesityPredictionResponse
-    explanation: Dict[str, Any] = Field(..., description="Valores de contribución de features")
-    explanation_type: str
-    
+
+    # Ej. "normal_weight"
+    prediction: str = Field(
+        ...,
+        description="Clase predicha por el modelo"
+    )
+
+    # Diccionario de feature -> contribución
+    feature_contributions: Dict[str, float] = Field(
+        ...,
+        description="Valores de contribución por característica del paciente"
+    )
+
+    # Tipo de explicabilidad solicitada
+    explain_type: Literal["shap", "feature_importance"] = Field(
+        ...,
+        description="Tipo de explicación generada"
+    )
+
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
-                "prediction": {
-                    "prediction": "normal_weight",
-                    "prediction_code": 1,
-                    "confidence": 0.95,
-                    "probabilities": {},
-                    "bmi": 26.12
-                },
-                "explanation": {
+                "prediction": "normal_weight",
+                "feature_contributions": {
                     "Weight": 0.35,
                     "Height": -0.12,
                     "Age": 0.08,
                     "FAF": -0.15,
                     "FCVC": -0.10
                 },
-                "explanation_type": "shap"
+                "explain_type": "shap"
             }
         }
 

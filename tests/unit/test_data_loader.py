@@ -5,6 +5,8 @@ from pathlib import Path
 
 from src.data.data_loader import CSVDataLoader, DataFrameAnalyzer, VariableManager
 
+pytestmark = pytest.mark.unit
+
 
 def test_csv_data_loader_reads_csv_file(tmp_path):
     """CSVDataLoader.load should read a CSV and return the expected DataFrame."""
